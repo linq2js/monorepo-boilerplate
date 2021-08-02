@@ -1,8 +1,17 @@
 module.exports = {
-  presets: ["@babel/preset-env"],
+  presets: [
+    [
+      "@babel/preset-env",
+      {
+        targets: {
+          node: "current",
+        },
+      },
+    ],
+  ],
   env: {
     production: {
-      presets: ["minify"],
+      presets: ["minify", { mangle: false }],
     },
     test: {
       presets: ["@babel/preset-env", "jest"],
