@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 import express from "express";
 import samplePackageData from "my-sample-package";
+import module1 from "shared/module1";
+
+console.log(module1);
 
 dotenv.config();
 
