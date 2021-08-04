@@ -2,9 +2,6 @@
   "name": "server",
   "main": "./dist/index.js",
   "description": "",
-  "scripts": {
-    "start": "nodemon --exec babel-node ./src/index.js --config-file ../../babel.config.js"
-  },
   "version": "0.0.0",
   "private": true,
   "dependencies": {

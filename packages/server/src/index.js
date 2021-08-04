@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import samplePackageData from "my-sample-package";
-import module1 from "shared/module1";
+import { module1 } from "shared";
 
 console.log(module1);
 

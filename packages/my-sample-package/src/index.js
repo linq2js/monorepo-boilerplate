@@ -1,4 +1,4 @@
-import module2 from "shared/module2";
+import { module2 } from "shared";
 
 console.log(module2);
 
