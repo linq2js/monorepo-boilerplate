@@ -4,6 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
+    "shared:build": "lerna exec --scope shared -- rollup --config ./rollup.config.js",
+    "server:start": "lerna exec --scope server -- nodemon --exec babel-node ./src/index.js --config-file ../../babel.config.js",
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch",
     "bootstrap": "lerna bootstrap",
@@ -17,8 +19,7 @@
     "commit:retry": "git-cz --retry",
     "lint": "eslint .",
     "postinstall": "npm run bootstrap",
-    "build-shared": "lerna run build --scope shared",
-    "prebuild": "lerna exec --parallel -- rimraf dist && npm run build-shared",
+    "prebuild": "lerna exec --parallel -- rimraf dist && npm run shared:build",
     "build": "lerna exec --parallel -- BABEL_ENV=production babel --copy-files --out-dir dist --config-file ../../babel.config.js src",
     "pre-commit:error": "echo-cli 'Could not commit. Fix the problem, then run: npm run commit:retry' && exit 1"
   },
