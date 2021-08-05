@@ -2,6 +2,14 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
+  ignore:
+    process.env.BABEL_ENV === "production"
+      ? [
+          "**/__tests__", // ignore the whole test directory
+          "**/*.test.js", // ignore test files only
+        ]
+      : [],
+  sourceMaps: process.env.BABEL_NO_SOURCE_MAPS ? false : "inline",
   presets: [
     [
       "@babel/preset-env",

@@ -4,9 +4,10 @@
   "description": "",
   "private": true,
   "scripts": {
-    "shared:build": "lerna exec --parallel --scope shared -- BABEL_ENV=production babel --copy-files --out-dir dist --config-file ../../babel.config.js src",
+    "shared:build": "lerna exec --parallel --scope shared -- BABEL_ENV=production babel --copy-files  --no-copy-ignored --out-dir dist --config-file ../../babel.config.js src",
     "server:start": "lerna exec --scope server -- nodemon --exec babel-node ./src/index.js --config-file ../../babel.config.js",
-    "build": "npm run shared:build && lerna exec --parallel --ignore shared -- BABEL_ENV=production babel --copy-files --out-dir dist --config-file ../../babel.config.js src",
+    "server:deploy": "BABEL_NO_SOURCE_MAPS=1 npm run build",
+    "build": "npm run shared:build && lerna exec --parallel --ignore shared -- BABEL_ENV=production babel --copy-files  --no-copy-ignored --out-dir dist --config-file ../../babel.config.js src",
     "publish": "lerna publish && git push",
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch",
@@ -68,7 +69,8 @@
     "lerna": "^4.0.0",
     "rimraf": "^3.0.2",
     "nodemon": "^2.0.12",
-    "babel-plugin-module-resolver": "^4.1.0"
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint-plugin-babel": "^5.3.1"
   },
   "eslintConfig": {
     "extends": [
